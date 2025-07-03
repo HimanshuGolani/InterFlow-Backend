@@ -11,6 +11,8 @@ import java.util.UUID;
 public interface UserService {
 
   User createUser(UserCreationDto data);
-  List<UserShortDetails> shortDetailsFromEntity(String userName);
+
+  List<UserShortDetails> shortDetailsFromEntity(String userNameKeyword, int page, int size);
+
   UserLargeDetails largeDetailsFromEntity(UUID userId);
 }

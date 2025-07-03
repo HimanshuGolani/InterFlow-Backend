@@ -9,7 +9,7 @@ import org.mapstruct.Mappings;
 import org.mapstruct.factory.Mappers;
 
 
-@Mapper(uses = {User.class, com.interflow.userservice.entity.User.class, UserLargeDetails.class, UserShortDetails.class})
+@Mapper(componentModel = "spring", uses = {User.class, com.interflow.userservice.entity.User.class, UserLargeDetails.class, UserShortDetails.class})
 public interface UserMapper {
     UserMapper INSTANCE = Mappers.getMapper(UserMapper.class);
 
@@ -18,7 +18,10 @@ public interface UserMapper {
 
     UserShortDetails shortDetailsFromEntity(com.interflow.userservice.entity.User user);
 
-    @Mapping(target = "questionIds", ignore = true)
-    UserLargeDetails largeDetailsFromEntity(com.interflow.userservice.entity.User user);
+    @Mappings({
+            @Mapping(target = "questionIds", ignore = true),
+            @Mapping(target = "answeredQuestionsIds", ignore = true),
+            @Mapping(target = "savedQuestions", ignore = true)
+    })    UserLargeDetails largeDetailsFromEntity(com.interflow.userservice.entity.User user);
 
 }

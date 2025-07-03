@@ -8,6 +8,7 @@ import com.interflow.userservice.util.dto.response.UserLargeDetails;
 import com.interflow.userservice.util.dto.response.UserShortDetails;
 import com.interflow.userservice.util.mapping.UserMapper;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,25 +24,21 @@ public class UserServiceImpl implements UserService {
     @Transactional
     @Override
     public User createUser(UserCreationDto data) {
-        try {
-            com.interflow.userservice.entity.User user = UserMapper.INSTANCE.userToEntity(data);
-            com.interflow.userservice.entity.User createdUser = userRepository.save(user);
-            return UserMapper.INSTANCE.userToResponse(createdUser);
-        }
-        catch (Exception e){
-            throw e;
-        }
+        var user = UserMapper.INSTANCE.userToEntity(data);
+        var createdUser = userRepository.save(user);
+        return UserMapper.INSTANCE.userToResponse(createdUser);
     }
 
     @Override
-    public List<UserShortDetails> shortDetailsFromEntity(String userName) {
-        return List.of();
+    public List<UserShortDetails> shortDetailsFromEntity(String userNameKeyword, int page, int size) {
+        var pageRequest = PageRequest.of(page, size);
+        return userRepository.searchByUserName(userNameKeyword, pageRequest);
     }
 
     @Override
     public UserLargeDetails largeDetailsFromEntity(UUID userId) {
-        return null;
+        var user = userRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("User not found with ID: " + userId));
+        return UserMapper.INSTANCE.largeDetailsFromEntity(user);
     }
-
-
 }
