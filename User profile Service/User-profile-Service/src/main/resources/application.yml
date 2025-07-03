@@ -1,0 +1,11 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name:  User-profile-Service
+
+  config:
+    import: configserver:http://localhost:8888
+
+
