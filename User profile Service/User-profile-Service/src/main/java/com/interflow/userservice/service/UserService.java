@@ -1,6 +1,7 @@
 package com.interflow.userservice.service;
 
 import com.interflow.userservice.util.dto.request.UserCreationDto;
+import com.interflow.userservice.util.dto.request.UserProfileUpdate;
 import com.interflow.userservice.util.dto.response.User;
 import com.interflow.userservice.util.dto.response.UserLargeDetails;
 import com.interflow.userservice.util.dto.response.UserShortDetails;
@@ -15,4 +16,6 @@ public interface UserService {
   List<UserShortDetails> shortDetailsFromEntity(String userNameKeyword, int page, int size);
 
   UserLargeDetails largeDetailsFromEntity(UUID userId);
+
+  UserLargeDetails findUserByIdAndUpdate(UUID id, UserProfileUpdate data);
 }

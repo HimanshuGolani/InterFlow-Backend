@@ -10,6 +10,7 @@
         <option value="$PROJECT_DIR$/../Config Server/configserver/pom.xml" />
         <option value="$PROJECT_DIR$/../Discovery Service/DiscoveryService/pom.xml" />
         <option value="$PROJECT_DIR$/../Question Service/Question-Service/pom.xml" />
+        <option value="$PROJECT_DIR$/../Badge Service/Badge-Service/pom.xml" />
       </list>
     </option>
   </component>

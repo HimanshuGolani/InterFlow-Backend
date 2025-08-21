@@ -2,6 +2,7 @@ package com.interflow.userservice.controller;
 
 import com.interflow.userservice.service.UserService;
 import com.interflow.userservice.util.dto.request.UserCreationDto;
+import com.interflow.userservice.util.dto.request.UserProfileUpdate;
 import com.interflow.userservice.util.dto.response.User;
 import com.interflow.userservice.util.dto.response.UserLargeDetails;
 import com.interflow.userservice.util.dto.response.UserShortDetails;
@@ -22,23 +23,15 @@ public class UserController {
     private final UserService userService;
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> findUserById(@PathVariable UUID id) {
-        try {
+    public ResponseEntity<UserLargeDetails> findUserById(@PathVariable UUID id) {
             UserLargeDetails userDetails = userService.largeDetailsFromEntity(id);
             return ResponseEntity.ok(userDetails);
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
-        }
     }
 
     @PostMapping
-    public ResponseEntity<?> saveUser(@RequestBody @Valid UserCreationDto userData) {
-        try {
+    public ResponseEntity<User> saveUser(@RequestBody @Valid UserCreationDto userData) {
             User createdUser = userService.createUser(userData);
             return ResponseEntity.status(HttpStatus.CREATED).body(createdUser);
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to create user");
-        }
     }
 
     @GetMapping("/search")
@@ -51,8 +44,11 @@ public class UserController {
         return ResponseEntity.ok(result);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<?> updateUserById(@PathVariable UUID id, @RequestBody UserCreationDto updateData) {
-        return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).body("Update functionality is not yet implemented.");
+    @PutMapping("/{id}/profile")
+    public ResponseEntity<UserLargeDetails> updateUserById(@PathVariable UUID id, @RequestBody UserProfileUpdate updateData) {
+        UserLargeDetails updatedUser = userService.findUserByIdAndUpdate(id,updateData);
+        return ResponseEntity.ok(updatedUser);
     }
+
+
 }
