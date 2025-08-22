@@ -1,17 +1,20 @@
 package com.interflow.questionservice.dto.response;
 
+import com.interflow.questionservice.entity.Comments;
+
 import java.util.List;
 import java.util.UUID;
 
-public class SmallQuestion {
+public class FullQuestion {
     private UUID id;
     private String title;
     private String userName;
-    private String question;
     private String imageUrl;
     private long upVotes;
     private long downVotes;
+    private List<Comments> comments;
     private String createdAt;
-    private long viewedBy;
     private List<String> tags;
+    private String question;
+
 }

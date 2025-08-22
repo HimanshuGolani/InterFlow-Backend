@@ -25,6 +25,9 @@ public class Question {
 
     private long upVotes;
 
+    private List<UUID> likedBy = new ArrayList<>();
+    private List<UUID> dislikedBy = new ArrayList<>();
+
     private long downVotes;
 
     @OneToMany(mappedBy = "question", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
@@ -34,6 +37,8 @@ public class Question {
     @CreatedDate
     private LocalDateTime createdAt;
 
-    private long viewedBy;
+    private long viewedByCount;
+
+    private Set<UUID> viewedBy = new HashSet<>();
 
 }
