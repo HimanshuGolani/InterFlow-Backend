@@ -1,0 +1,16 @@
+syntax = "proto3";
+package question;
+import "response/SmallQuestion.proto";
+
+
+service UserServiceContract {
+  rpc getSmallQuestions(SmallQuestionRequest) returns (SmallQuestionsList);
+}
+
+message SmallQuestionRequest {
+  string id=1;
+}
+
+message SmallQuestionsList {
+  repeated SmallQuestion smallQuestions=1;
+}

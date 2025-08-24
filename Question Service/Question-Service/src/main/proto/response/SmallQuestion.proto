@@ -1,0 +1,16 @@
+syntax = "proto3";
+option java_package="com.interflow";
+
+
+message SmallQuestion {
+   string id=1;
+   string title=2;
+   string userName=3;
+   string question=4;
+   string imageUrl=5;
+   int64 upVote=6;
+   int64 downVote=7;
+   string createdAt=8;
+   int64 viewedBy=9;
+   repeated string tags=10;
+}

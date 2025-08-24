@@ -1,7 +1,6 @@
 package com.interflow.questionservice.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
@@ -21,6 +20,10 @@ public class Comments {
 //    likes and is likes
     private long likes;
     private long dislikes;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "question_id", nullable = false)
+    private Question question;
 
     @CreatedDate
     private LocalDateTime createdAt;

@@ -1,0 +1,9 @@
+syntax = "proto3";
+package user;
+option java_package="com.interflow";
+import "response/UserResponse.proto";
+import "request/UserRequest.proto";
+
+service QuestionServiceContract {
+  rpc getUser(UserRequest) returns (UserResponse);
+}

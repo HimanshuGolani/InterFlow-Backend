@@ -54,9 +54,9 @@ public class User {
 
     private List<UUID> answeredQuestionsIds;
 
-    private AtomicInteger totalUpVotes;
+    private long totalUpVotes;
 
-    private AtomicInteger profileVisits;
+    private long profileVisits;
 
     private List<UUID> savedQuestions;
 

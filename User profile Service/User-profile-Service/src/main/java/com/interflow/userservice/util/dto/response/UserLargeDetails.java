@@ -13,8 +13,8 @@ public record UserLargeDetails(
         String company,
         String profileImageUrl,
         String position,
-        AtomicInteger totalUpVotes,
-        AtomicInteger profileVisits,
+        long totalUpVotes,
+        long profileVisits,
 //        after the question service is implemented please send this questions list as per the
 //        pagination not the ids.
         List<UUID> questionIds,

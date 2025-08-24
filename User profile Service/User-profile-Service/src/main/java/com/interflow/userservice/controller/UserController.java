@@ -50,5 +50,7 @@ public class UserController {
         return ResponseEntity.ok(updatedUser);
     }
 
+//     Get users questions just take the id and send the questions small questions
+
 
 }

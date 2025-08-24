@@ -6,7 +6,6 @@ import com.interflow.questionservice.dto.response.SmallQuestion;
 import com.interflow.questionservice.service.contract.QuestionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
@@ -23,7 +22,7 @@ public class QuestionsController {
 //     search some question
     @GetMapping
     public ResponseEntity<SmallQuestion> getSmallQuestions(@RequestParam MultiValueMap<String,String> params){
-
+        return null;
     }
 
 //     get the complete question by id include the increment in viewed in count.

@@ -20,8 +20,6 @@ public interface UserMapper {
 
     @Mappings({
             @Mapping(target = "questionIds", ignore = true),
-            @Mapping(target = "answeredQuestionsIds", ignore = true),
-            @Mapping(target = "savedQuestions", ignore = true)
     })    UserLargeDetails largeDetailsFromEntity(com.interflow.userservice.entity.User user);
 
 }

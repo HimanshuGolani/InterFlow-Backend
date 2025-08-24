@@ -19,6 +19,8 @@ public class Question {
 
     private String title;
 
+    private UUID userId;
+
     private List<String> tags = new ArrayList<>();
 
     private String question;
